@@ -1,0 +1,52 @@
+2023-09-13 11:45:19,756 AL-RIPU INFO: Namespace(config_file='configs/gtav/deeplabv3plus_r101_RA.yaml', opts=['OUTPUT_DIR', 'results/v3plus_gtav_ra_5.0_precent'], proctitle='AL-RIPU')
+2023-09-13 11:45:19,757 AL-RIPU INFO: Loaded configuration file configs/gtav/deeplabv3plus_r101_RA.yaml
+2023-09-13 11:45:19,757 AL-RIPU INFO: Running with config:
+ACTIVE:
+  NAME: AL-RIPU
+  PIXELS: 40
+  RADIUS_K: 1
+  RATIO: 0.05
+  SELECT_ITER: [10000, 12000, 14000, 16000, 18000]
+  SETTING: RA
+DATASETS:
+  SOURCE_TRAIN: gtav_train
+  TARGET_TRAIN: cityscapes_train
+  TEST: cityscapes_val
+DEBUG: 0
+INPUT:
+  IGNORE_LABEL: 255
+  INPUT_SCALES_TRAIN: (1.0, 1.0)
+  INPUT_SIZE_TEST: (1280, 640)
+  PIXEL_MEAN: [0.485, 0.456, 0.406]
+  PIXEL_STD: [0.229, 0.224, 0.225]
+  SOURCE_INPUT_SIZE_TRAIN: (1280, 720)
+  TARGET_INPUT_SIZE_TRAIN: (1280, 640)
+  TO_BGR255: False
+MODEL:
+  DEVICE: cuda
+  FREEZE_BN: True
+  NAME: deeplabv3plus_resnet101
+  NUM_CLASSES: 19
+  WEIGHTS: https://download.pytorch.org/models/resnet101-5d3b4d8f.pth
+OUTPUT_DIR: results/v3plus_gtav_ra_5.0_precent
+PREPARE_DIR: 
+SEED: -1
+SOLVER:
+  BASE_LR: 0.00025
+  BATCH_SIZE: 2
+  BATCH_SIZE_VAL: 1
+  CHECKPOINT_PERIOD: 10000
+  CONSISTENT_LOSS: 0.1
+  LCR_TYPE: l1
+  LR_METHOD: poly
+  LR_POWER: 0.9
+  MAX_ITER: 62500
+  MOMENTUM: 0.9
+  NEGATIVE_LOSS: 1.0
+  NEGATIVE_THRESHOLD: 0.05
+  STOP_ITER: 40000
+  WEIGHT_DECAY: 0.0005
+TEST:
+  BATCH_SIZE: 1
+resume: 
+2023-09-13 11:45:19,757 AL-RIPU INFO: Initializing Cityscapes label mask...
