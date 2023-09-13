@@ -4,9 +4,9 @@ MODEL:
   FREEZE_BN: True
   NUM_CLASSES: 19
 DATASETS:
-  SOURCE_TRAIN: "ade20k_train"   # gtav_train and synthia_train
-  TARGET_TRAIN: "cityscapes_train"
-  TEST: "cityscapes_val"
+  SOURCE_TRAIN: "ADE20k_train"   # gtav_train and synthia_train
+  TARGET_TRAIN: "ADE20k_train"
+  TEST: "ADE20k_train"
 INPUT:
   SOURCE_INPUT_SIZE_TRAIN: (1280, 720)
   TARGET_INPUT_SIZE_TRAIN: (1280, 640)
