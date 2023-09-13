@@ -6,13 +6,13 @@ from PIL import Image
 
 import torchvision
 from torchvision.transforms import functional as F
-import cv2
+
 from collections.abc import Sequence
 import torch
 
 np.random.seed(0)
 
-
+import cv2
 class Compose(object):
     def __init__(self, transforms):
         self.transforms = transforms

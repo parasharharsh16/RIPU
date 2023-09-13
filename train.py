@@ -11,7 +11,7 @@ import torch.distributed
 from torch.utils.data import DataLoader
 
 from core.configs import cfg
-from core.datasets import build_dataset
+from core.datasets.build import build_dataset
 from core.models import build_feature_extractor, build_classifier
 from core.solver import adjust_learning_rate
 from core.utils.misc import mkdir

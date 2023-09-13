@@ -26,16 +26,28 @@ parser.add_argument("-o",
                     type=str,
                     )
 args = parser.parse_args()
-imgdir = os.path.join(args.datadir, 'images')
-labdir = os.path.join(args.datadir, 'labels')
+# imgdir = os.path.join(args.datadir, 'images')
+# labdir = os.path.join(args.datadir, 'annotations')
+imgdir = os.path.join('archive', 'images')
+labdir = os.path.join('archive', 'annotations')
 labfiles = os.listdir(labdir)
 nprocs = args.nprocs
-savedir = args.output_dir
+savedir =  'datasets/ADE20k/' #args.output_dir
 
 ignore_label = 255
-id_to_trainid = {7: 0, 8: 1, 11: 2, 12: 3, 13: 4, 17: 5,
-                 19: 6, 20: 7, 21: 8, 22: 9, 23: 10, 24: 11, 25: 12,
-                 26: 13, 27: 14, 28: 15, 31: 16, 32: 17, 33: 18}
+id_to_trainid = {}
+for i in range(150):
+    id_to_trainid[i] = i
+# id_to_trainid = {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 
+#                  11: 11, 12: 12, 13: 13, 14: 14, 15: 15, 16: 16, 
+#                  17: 17, 18: 18, 19: 19, 20: 20, 
+#                  21:21,22:22,23:23,24:24,25:25,
+#                  26:26,27:27,28:28,29:29,
+#                  30:30,31:31,32:32}
+
+# id_to_trainid = {7: 0, 8: 1, 11: 2, 12: 3, 13: 4, 17: 5,
+#                  19: 6, 20: 7, 21: 8, 22: 9, 23: 10, 24: 11, 25: 12,
+#                  26: 13, 27: 14, 28: 15, 31: 16, 32: 17, 33: 18}
 
 
 def generate_label_info():
@@ -80,8 +92,9 @@ def main():
             for lab in range(len(l2f)):
                 label_to_file[lab].extend(l2f[lab])
             for fname in f2l.keys():
-                file_to_label[fname].extend(f2l[fname])
-    with open(os.path.join(savedir, 'gtav_label_info.p'), 'wb') as f:
+                fnameInImg = fname.split('.')[0]+'.jpg'
+                file_to_label[fnameInImg].extend(f2l[fname])
+    with open(os.path.join(savedir, 'Ade20k_label_info.p'), 'wb') as f:
         pickle.dump((label_to_file, file_to_label), f)
 
 
