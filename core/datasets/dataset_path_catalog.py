@@ -23,12 +23,12 @@ class DatasetCatalog(object):
             "data_list": "synthia_train_list.txt"
         },
         "cityscapes_train": {
-            "data_dir": "cityscapes",
-            "data_list": "cityscapes_train_list.txt"
+            "data_dir": "archive/images",
+            "data_list": "ADE20k_train_list.txt"
         },
         "cityscapes_val": {
-            "data_dir": "cityscapes",
-            "data_list": "cityscapes_val_list.txt"
+            "data_dir": "archive/images",
+            "data_list": "ADE20k_val_list.txt"
         },
     }
 
