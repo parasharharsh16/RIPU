@@ -74,19 +74,22 @@ class DatasetCatalog(object):
         data_dir = DatasetCatalog.DATASET_DIR
         attrs = DatasetCatalog.DATASETS['cityscapes_train']
         data_list = os.path.join(data_dir, attrs["data_list"])
-        root = os.path.join(data_dir, attrs["data_dir"])
+        
+        #root = os.path.join(data_dir, attrs["data_dir"])
+        root = os.path.join(attrs["data_dir"])
         with open(data_list, "r") as handle:
             content = handle.readlines()
         for fname in tqdm(content):
             name = fname.strip()
-            path2image = os.path.join(root, "leftImg8bit/%s/%s" % ('train', name))
+            #path2image = os.path.join(root, "leftImg8bit/%s/%s" % ('train', name))
+            path2image = os.path.join(root, "/%s" % (name))
             path2mask = os.path.join(
                 cfg.OUTPUT_DIR,
                 "gtMask/%s/%s"
                 % (
                     "train",
-                    name.split("_leftImg8bit")[0]
-                    + "_gtFine_labelIds.png",
+                    name.split(".")[0]
+                    + "_gtFine_labelIds.jpg",
                 ),
             )
             path2indicator = os.path.join(
@@ -94,7 +97,7 @@ class DatasetCatalog(object):
                 "gtIndicator/%s/%s"
                 % (
                     "train",
-                    name.split("_leftImg8bit")[0]
+                    name.split(".")[0]
                     + "_indicator.pth",
                 ),
             )
